@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mapa de Lilith</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Georgia', serif;
+      background: #111;
+      color: #f5e6c3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      flex-direction: column;
+      text-align: center;
+    }
+    .container {
+      width: 90%;
+      max-width: 600px;
+      background: #1c1c1c;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    }
+    img.logo {
+      max-width: 240px;
+      height: auto;
+      margin-bottom: 20px;
+    }
+    .subtitle {
+      font-size: 16px;
+      margin-bottom: 20px;
+      color: #c9b98b;
+    }
+    .progress-bar {
+      height: 10px;
+      background: #ffd700;
+      width: 0%;
+      transition: width 0.4s ease;
+      margin-bottom: 20px;
+    }
+    .question {
+      margin-top: 30px;
+      display: none;
+    }
+    .question.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+    button {
+      margin: 10px 0;
+      padding: 12px 20px;
+      background: #daa520;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 6px;
+      width: 100%;
+      font-size: 15px;
+    }
+    button:hover {
+      opacity: 0.9;
+    }
+    footer {
+      font-size: 11px;
+      color: #888;
+      margin-top: 30px;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+  <link rel="icon" href="./favicon.ico" type="image/x-icon">
+  <!-- Meta Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1191741876013679');
+  fbq('track', 'Quizz');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1191741876013679&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+</head>
+<body>
+  <div class="container">
+    <img src="logo.png" alt="Mapa de Lilith" class="logo"/>
+    <div class="subtitle">Você não nasceu pra se esconder. Desbloqueie agora a energia da mulher que não pede permissão.</div>
+    <div class="progress-bar" id="progressBar"></div>
+    <div id="quiz">
+      <!-- Perguntas -->
+      <div class="question active" id="q0">
+        <p>Pergunta 1: Qual sensação você mais sente ao acordar?</p>
+        <button onclick="next(1)">Cansada</button>
+        <button onclick="next(1)">Ansiosa</button>
+        <button onclick="next(1)">Desconectada</button>
+      </div>
+      <div class="question" id="q1">
+        <p>Pergunta 2: Com que frequência você sente que está se anulando?</p>
+        <button onclick="next(2)">Quase sempre</button>
+        <button onclick="next(2)">Às vezes</button>
+        <button onclick="next(2)">Nunca</button>
+      </div>
+      <div class="question" id="q2">
+        <p>Pergunta 3: Você costuma se sentir desejada?</p>
+        <button onclick="next(3)">Sim</button>
+        <button onclick="next(3)">Raramente</button>
+        <button onclick="next(3)">Não</button>
+      </div>
+      <div class="question" id="q3">
+        <p>Pergunta 4: Você se sente confortável com o seu corpo?</p>
+        <button onclick="next(4)">Sim</button>
+        <button onclick="next(4)">Mais ou menos</button>
+        <button onclick="next(4)">Não</button>
+      </div>
+      <div class="question" id="q4">
+        <p>Pergunta 5: Como está sua vida íntima?</p>
+        <button onclick="next(5)">Parada</button>
+        <button onclick="next(5)">Frustrada</button>
+        <button onclick="next(5)">Boa</button>
+      </div>
+      <div class="question" id="q5">
+        <p>Pergunta 6: Você sente que tem algo bloqueado dentro de você?</p>
+        <button onclick="next(6)">Sim</button>
+        <button onclick="next(6)">Às vezes</button>
+        <button onclick="next(6)">Não</button>
+      </div>
+      <div class="question" id="q6">
+        <p>Pergunta 7: Qual sua maior dificuldade hoje?</p>
+        <button onclick="next(7)">Me sentir atraente</button>
+        <button onclick="next(7)">Ter prazer</button>
+        <button onclick="next(7)">Aceitar meu corpo</button>
+      </div>
+      <div class="question" id="q7">
+        <p>Pergunta 8: Se você pudesse transformar 1 coisa agora, o que seria?</p>
+        <button onclick="showResult()">Minha energia pessoal</button>
+        <button onclick="showResult()">Minha confiança</button>
+        <button onclick="showResult()">Minha vida íntima</button>
+      </div>
+      <div class="question" id="result">
+        <h2>Resultado:</h2>
+        <p>Você carrega bloqueios ocultos que afetam sua energia, sua autoestima e sua sensualidade. Isso não é culpa sua.  
+        Mas agora, você pode acessar um método que desperta sua energia feminina mais profunda e autêntica.</p>
+        <a href="lilith.html" style="display:inline-block; margin-top:20px; background:#e60073; padding:12px 24px; color:white; text-decoration:none; border-radius:6px;">Quero desbloquear meu mapa agora</a>
+      </div>
+    </div>
+  </div>
+  <footer>© Mapa de Lilith</footer>
+  <script>
+    let current = 0;
+    function next(n) {
+      document.getElementById('q' + current).classList.remove('active');
+      document.getElementById('q' + n).classList.add('active');
+      current = n;
+      document.getElementById('progressBar').style.width = ((n+1)*12.5) + '%';
+    }
+    function showResult() {
+      document.getElementById('q' + current).classList.remove('active');
+      document.getElementById('result').classList.add('active');
+      document.getElementById('progressBar').style.width = '100%';
+    }
+  </script>
+</body>
+</html>
