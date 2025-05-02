@@ -32,10 +32,11 @@
       margin-bottom: 20px;
     }
     .subtitle {
-      font-size: 16px;
+      font-size: 19px;
       margin-bottom: 20px;
       color: #c9b98b;
     }
+    .hidden { display: none; }
     .progress-bar {
       height: 10px;
       background: #ffd700;
@@ -44,6 +45,7 @@
       margin-bottom: 20px;
     }
     .question {
+      font-size: 19px;
       margin-top: 30px;
       display: none;
     }
@@ -61,6 +63,7 @@
       border-radius: 6px;
       width: 100%;
       font-size: 15px;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
     }
     button:hover {
       opacity: 0.9;
@@ -75,84 +78,58 @@
       to { opacity: 1; transform: translateY(0); }
     }
   </style>
-  <link rel="icon" href="./favicon.ico" type="image/x-icon">
-  <!-- Meta Pixel Code -->
-<script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1191741876013679');
-  fbq('track', 'Quizz');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=1191741876013679&ev=PageView&noscript=1"
-  /></noscript>
-  <!-- End Meta Pixel Code -->
 </head>
 <body>
+  <!-- restante do código continua igual -->
+
   <div class="container">
     <img src="logo.png" alt="Mapa de Lilith" class="logo"/>
-    <div class="subtitle">Você não nasceu pra se esconder. Desbloqueie agora a energia da mulher que não pede permissão.</div>
+    <div class="subtitle" id="subtitle">
+      Existe um lado seu que assusta as pessoas — até você mesma.<br>
+      Descubra o que Lilith revela sobre sua força, seus traumas e seu verdadeiro poder.
+      <p></p>
+      Mulheres com energia de Lilith vivem com um peso interno que não conseguem explicar.<br>
+      Sentem demais, amam demais, sofrem caladas…<br>
+      Mas nunca foram feitas pra serem domadas.
+      <p></p>
+      Responda essas perguntas rápidas e veja como Lilith influencia seus relacionamentos, seu prazer, sua raiva e o motivo pelo qual você atrai exatamente os tipos errados de homens (ou repele todos eles).
+    </div>
     <div class="progress-bar" id="progressBar"></div>
     <div id="quiz">
       <!-- Perguntas -->
       <div class="question active" id="q0">
-        <p>Pergunta 1: Qual sensação você mais sente ao acordar?</p>
-        <button onclick="next(1)">Cansada</button>
-        <button onclick="next(1)">Ansiosa</button>
-        <button onclick="next(1)">Desconectada</button>
+        <p>Quando você sente algo muito intenso... o que costuma acontecer?</p>
+        <button onclick="next(1, 'A')">Eu me fecho, é como se travasse tudo por dentro.</button>
+        <button onclick="next(1, 'B')">Explodo ou choro, não consigo fingir que tá tudo bem.</button>
+        <button onclick="next(1, 'C')">Eu ignoro, mas depois isso volta como um furacão.</button>
       </div>
       <div class="question" id="q1">
-        <p>Pergunta 2: Com que frequência você sente que está se anulando?</p>
-        <button onclick="next(2)">Quase sempre</button>
-        <button onclick="next(2)">Às vezes</button>
-        <button onclick="next(2)">Nunca</button>
+        <p>Nos seus relacionamentos, o que mais acontece?</p>
+        <button onclick="next(2, 'A')">Eu sou a “mais intensa” sempre, e acabo assustando a pessoa.</button>
+        <button onclick="next(2, 'B')">Eu viro o porto seguro, mas por dentro tô sempre querendo mais.</button>
+        <button onclick="next(2, 'C')">Me magoo fácil e me torno fria, tipo vingativa mesmo.</button>
       </div>
       <div class="question" id="q2">
-        <p>Pergunta 3: Você costuma se sentir desejada?</p>
-        <button onclick="next(3)">Sim</button>
-        <button onclick="next(3)">Raramente</button>
-        <button onclick="next(3)">Não</button>
+        <p>Como você lida com seus desejos (sexuais, emocionais, materiais)?</p>
+        <button onclick="next(3, 'A')">Eu desejo MUITO, mas sinto culpa logo depois.</button>
+        <button onclick="next(3, 'B')">Tento me controlar pra não parecer “demais”.</button>
+        <button onclick="next(3, 'C')">Às vezes me deixo levar… e depois me arrependo ou me sinto suja.</button>
       </div>
       <div class="question" id="q3">
-        <p>Pergunta 4: Você se sente confortável com o seu corpo?</p>
-        <button onclick="next(4)">Sim</button>
-        <button onclick="next(4)">Mais ou menos</button>
-        <button onclick="next(4)">Não</button>
+        <p>Quando sente raiva, o que mais acontece com você?</p>
+        <button onclick="next(4, 'A')">Eu engulo e me isolo, fico dias remoendo.</button>
+        <button onclick="next(4, 'B')">Digo o que penso, mesmo que machuque.</button>
+        <button onclick="next(4, 'C')">Me torno cruel com quem pisou em mim (mesmo se ainda amo a pessoa).</button>
       </div>
       <div class="question" id="q4">
-        <p>Pergunta 5: Como está sua vida íntima?</p>
-        <button onclick="next(5)">Parada</button>
-        <button onclick="next(5)">Frustrada</button>
-        <button onclick="next(5)">Boa</button>
-      </div>
-      <div class="question" id="q5">
-        <p>Pergunta 6: Você sente que tem algo bloqueado dentro de você?</p>
-        <button onclick="next(6)">Sim</button>
-        <button onclick="next(6)">Às vezes</button>
-        <button onclick="next(6)">Não</button>
-      </div>
-      <div class="question" id="q6">
-        <p>Pergunta 7: Qual sua maior dificuldade hoje?</p>
-        <button onclick="next(7)">Me sentir atraente</button>
-        <button onclick="next(7)">Ter prazer</button>
-        <button onclick="next(7)">Aceitar meu corpo</button>
-      </div>
-      <div class="question" id="q7">
-        <p>Pergunta 8: Se você pudesse transformar 1 coisa agora, o que seria?</p>
-        <button onclick="showResult()">Minha energia pessoal</button>
-        <button onclick="showResult()">Minha confiança</button>
-        <button onclick="showResult()">Minha vida íntima</button>
+        <p>No fundo, você sente que...</p>
+        <button onclick="showResult('A')">Ninguém realmente te entende, nem você mesma.</button>
+        <button onclick="showResult('B')">Existe uma força em você que ainda não foi usada.</button>
+        <button onclick="showResult('C')">Tem algo errado com você, mas você nunca conseguiu explicar o que é.</button>
       </div>
       <div class="question" id="result">
         <h2>Resultado:</h2>
-        <p>Você carrega bloqueios ocultos que afetam sua energia, sua autoestima e sua sensualidade. Isso não é culpa sua.  
-        Mas agora, você pode acessar um método que desperta sua energia feminina mais profunda e autêntica.</p>
+        <p id="resultText"></p>
         <a href="lilith.html" style="display:inline-block; margin-top:20px; background:#e60073; padding:12px 24px; color:white; text-decoration:none; border-radius:6px;">Quero desbloquear meu mapa agora</a>
       </div>
     </div>
@@ -160,16 +137,32 @@
   <footer>© Mapa de Lilith</footer>
   <script>
     let current = 0;
-    function next(n) {
+    let answers = [];
+
+    function next(n, choice) {
+      answers.push(choice);
       document.getElementById('q' + current).classList.remove('active');
       document.getElementById('q' + n).classList.add('active');
       current = n;
-      document.getElementById('progressBar').style.width = ((n+1)*12.5) + '%';
+      document.getElementById('progressBar').style.width = ((n+1)*20) + '%';
     }
-    function showResult() {
+
+    function showResult(finalChoice) {
+      answers.push(finalChoice);
       document.getElementById('q' + current).classList.remove('active');
       document.getElementById('result').classList.add('active');
       document.getElementById('progressBar').style.width = '100%';
+      document.getElementById('subtitle').classList.add('hidden');
+      const resultText = document.getElementById('resultText');
+      resultText.innerText = interpretResult(answers);
+    }
+
+    function interpretResult(answers) {
+      const counts = { A: 0, B: 0, C: 0 };
+      answers.forEach(a => counts[a]++);
+      if (counts.A >= 3) return '🩸 Você é a Lilith Enjaulada 🩸\n\nVocê aprendeu a conter sua intensidade pra não ser rejeitada. Guarda emoções, desejos e fúrias em silêncio. Mas essa força silenciosa é o que te bloqueia.\n\nSeu mapa vai te mostrar como libertar essa energia sem culpa, assumir sua verdade e parar de se sabotar por medo de parecer “demais”.';
+      if (counts.B >= 3) return '🔥 Você é a Lilith Desafiadora 🔥\n\nVocê não aceita repressão, mas vive em conflito entre sua força e a necessidade de ser aceita. Oscila entre empoderamento e culpa.\n\nSeu mapa vai te ajudar a alinhar sua intensidade com propósito e fazer as pazes com o prazer, o poder e o amor sem se perder em nenhum deles.';
+      return '🌑 Você é a Lilith Sombria 🌑\n\nVocê carrega magnetismo, sensualidade e uma dor profunda que poucos conseguem acessar. Atrai olhares e também julgamentos.\n\nSeu mapa vai revelar como transformar sua sombra em poder, como honrar sua intensidade sem medo e como romper com os ciclos que drenam sua alma.';
     }
   </script>
 </body>
