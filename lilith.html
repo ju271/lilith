@@ -1,391 +1,177 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mapa de Lilith – O Espelho da Alma Feminina</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mapa de Lilith</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), #0a0a0a), url('background.png') no-repeat center top;
-      background-size: cover;
-      color: #f5e6c3;
       font-family: 'Georgia', serif;
+      background: #111;
+      color: #f5e6c3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      flex-direction: column;
       text-align: center;
-      font-size: 20px;
-      overflow-x: hidden;
     }
     .container {
-      max-width: 720px;
-      margin: auto;
-      padding: 40px 20px;
-      position: relative;
-      z-index: 2;
+      width: 90%;
+      max-width: 600px;
+      background: #1c1c1c;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.4);
     }
     img.logo {
       max-width: 240px;
+      height: auto;
       margin-bottom: 20px;
     }
-    h1 {
-      font-size: 34px;
-      color: #ffd700;
+    .hidden { display: none; }
+    .progress-bar {
+      height: 10px;
+      background: #ffd700;
+      width: 0%;
+      transition: width 0.4s ease;
       margin-bottom: 20px;
     }
-    h2 {
-      font-size: 24px;
-      margin-top: 40px;
-      color: #e6d8ac;
+    .question {
+      font-size: 19px;
+      margin-top: 30px;
+      display: none;
     }
-    p {
-      font-size: 20px;
-      line-height: 1.7;
-      color: #d8c99b;
+    .question.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
     }
-    ul {
-      text-align: left;
-      padding-left: 20px;
-      margin: 0 auto;
-      max-width: 600px;
-    }
-    li {
-      margin-bottom: 12px;
-    }
-    .cta {
-      margin-top: 40px;
-    }
-    .cta a {
+    button {
+      margin: 10px 0;
+      padding: 12px 20px;
       background: #e60073;
+      border: none;
       color: #fff;
-      padding: 18px 36px;
-      text-decoration: none;
-      font-size: 20px;
+      cursor: pointer;
       border-radius: 6px;
-      display: inline-block;
-      animation: pulse 2s infinite;
+      width: 100%;
+      font-size: 15px;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+      transition: all 0.3s ease;
     }
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-    .escassez {
-      font-size: 18px;
-      color: #ffcc66;
-      margin-top: 12px;
-      animation: pulse 2s infinite;
-    }
-    .contador {
-      font-size: 22px;
-      color: #ffd700;
-      margin-top: 15px;
-      font-weight: bold;
+    button:hover {
+      opacity: 0.9;
+      transform: scale(1.02);
     }
     footer {
-      font-size: 14px;
-      color: #777;
-      margin-top: 60px;
+      font-size: 11px;
+      color: #888;
+      margin-top: 30px;
     }
-    .stars {
-      position: fixed;
-      top: -50vh;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 1;
-    }
-    .star {
-      position: absolute;
-      width: 2px;
-      height: 2px;
-      background: white; opacity: 0.8;
-      border-radius: 50%;
-      animation: float 12s linear infinite;
-    }
-    @keyframes float {
-      0% { transform: translateY(100vh); opacity: 0; }
-      10% { opacity: 0.6; }
-      100% { transform: translateY(-10vh); opacity: 0; }
-    }
-    .depoimento {
-      background: #1c1c1c;
-      padding: 30px;
-      border-radius: 12px;
-      margin-top: 50px;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
-    }
-    .depoimento p {
-      font-style: italic;
-      font-size: 18px;
-      color: #e6d8ac;
-    }
-    .depoimento span {
-      display: block;
-      margin-top: 15px;
-      color: #ffcc99;
-      font-weight: bold;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
-  <!-- TikTok Pixel Code Start -->
-<script>
-!function (w, d, t) {
-  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
-var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
-;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
-
-
-  ttq.load('D0BNIFBC77UDFM0G1M7G');
-  ttq.page();
-}(window, document, 'ttq');
-</script>
-<!-- TikTok Pixel Code End -->
-    <!-- Meta Pixel Code -->
-<script type="rocketlazyloadscript">
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1191741876013679');
-fbq('trackCustom', 'QUIZZ');
-</script>
-<noscript>
-<img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=910593670153469&ev=PageView&noscript=1"
-/>
-</noscript>
-<!-- End Meta Pixel Code -->
 </head>
 <body>
-  <div class="stars" id="stars"></div>
-  <div class="container">
-    <img src="logo.png" alt="Mapa de Lilith" class="logo" />
-    <h1>Hora de despertar a energia feminina proibida que faz ele correr atrás de você - e implorar para ficar...</h1>
+<audio id="clickSound" src="effect.mp3" preload="auto"></audio>
+<div class="container">
+  <img src="logo.png" alt="Mapa de Lilith" class="logo"/>
 
-    <p><strong>O Mapa de Lilith</strong> é mais do que um mapa.  
-    É um acesso direto à versão mais magnética, irresistível e inesquecível que você já foi.  
-    Aquela que ele sentiu, mas nunca conseguiu entender.  
-    Aquela que pode fazer ele voltar — sem você precisar mandar uma única mensagem.</p>
+  <div id="intro">
+    <h2 style="font-size: 1.4em; color: #f5e6c3; margin-bottom: 8px;">Existem 5 gatilhos secretos que deixam um homem viciado sem saber o porquê.</h2>
+    <p style="font-style: italic; color: #c9b98b; margin-bottom: 30px;">Lilith usava todas, agora é a sua vez.</p>
+    <p style="font-size: 1.05em; margin-bottom: 30px; color: #f5e6c3;">Responda o quizz e acesse o mapa. Hora de despertar seu poder feminino oculto.</p>
+    <button onclick="startQuiz()">Vamos Começar</button>
+  </div>
 
+  <div class="progress-bar" id="progressBar" style="display:none;"></div>
 
-    <h2>Se você sente isso, é porque ainda existe algo entre vocês:</h2>
-    <ul>
-      <li>Você deu tudo, e mesmo assim ele se afastou sem olhar pra trás</li>
-      <li>Você tentou ser forte, mas toda música parece lembrar dele</li>
-      <li>Você se culpa por ter sido intensa, por ter sentido demais</li>
-      <li>E mesmo assim, no fundo… você só quer uma chance de virar o jogo</li>
-    </ul>
-
-
-
-    <h2>Isso tem nome: Lilith.</h2>
-    <p>Uma força que vive em você, mas foi sufocada por anos.  
-    Lilith é o seu magnetismo natural. A presença que faz ele olhar duas vezes.  
-    A intensidade que ele não entendeu — e por isso se afastou.</p>
-
-    <h2>Quando você aprende a ativar essa energia, tudo muda.</h2>
-    <ul>
-      <li>Você deixa de ser esquecida e passa a ser impossível de ignorar</li>
-      <li>Ele começa a lembrar de momentos que achava superados</li>
-      <li>Você aprende a despertar desejo sem se humilhar por atenção</li>
-      <li>Você para de correr atrás — e começa a ser perseguida</li>
-      <li>Você vira o espelho daquilo que ele sempre buscou… mas só percebe quando te perde</li>
-    </ul>
-
-
-<h2 style="margin-top: 60px;">Elas seguiram o Mapa de Lilith ao pé da letra:</h2>
-
-<style>
-  .depoimento-carousel {
-    margin-top: 30px;
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-    max-width: 720px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .depoimento-track {
-    display: flex;
-    transition: transform 0.8s ease;
-  }
-
-  .depoimento-slide {
-    min-width: 100%;
-    box-sizing: border-box;
-    padding: 10px;
-  }
-
-  .depoimento-slide img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-  }
-
-  .arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.15);
-    border: none;
-    color: white;
-    font-size: 26px;
-    padding: 8px 14px;
-    cursor: pointer;
-    z-index: 10;
-    border-radius: 50%;
-    transition: background 0.2s;
-  }
-
-  .arrow:hover {
-    background: rgba(255, 255, 255, 0.3);
-  }
-
-  .arrow-left {
-    left: 10px;
-  }
-
-  .arrow-right {
-    right: 10px;
-  }
-</style>
-
-<div class="depoimento-carousel">
-  <button class="arrow arrow-left" onclick="prevSlide()">‹</button>
-  <button class="arrow arrow-right" onclick="nextSlide()">›</button>
-
-  <div class="depoimento-track" id="depoimentoTrackImg">
-    <div class="depoimento-slide">
-      <img src="https://i.postimg.cc/W4G2bN6t/1.png" alt="Depoimento 1">
+  <div id="quiz" style="display:none;">
+    <div class="question active" id="q0">
+      <p>Você sente que ele se afastou porque…</p>
+      <button onclick="next(1, 'A')">Fui intensa demais, e isso assustou ele.</button>
+      <button onclick="next(1, 'B')">Me entreguei cedo demais, e perdeu o mistério.</button>
+      <button onclick="next(1, 'C')">Dei tudo, mas ele nunca valorizou.</button>
     </div>
-    <div class="depoimento-slide">
-      <img src="https://i.postimg.cc/KYD2h9xM/2.png" alt="Depoimento 2">
+    <div class="question" id="q1">
+      <p>O que mais machuca nessa história com ele?</p>
+      <button onclick="next(2, 'A')">Saber que ele tá bem… enquanto eu sinto falta.</button>
+      <button onclick="next(2, 'B')">A forma como ele simplesmente sumiu sem olhar pra trás.</button>
+      <button onclick="next(2, 'C')">O fato de ele me desejar, mas nunca me escolher.</button>
     </div>
-    <div class="depoimento-slide">
-      <img src="https://i.postimg.cc/RFCzScZb/3.png" alt="Depoimento 3">
+    <div class="question" id="q2">
+      <p>Se ele voltasse hoje… o que você faria?</p>
+      <button onclick="next(3, 'A')">Faria ele correr atrás até implorar.</button>
+      <button onclick="next(3, 'B')">Daria o troco em silêncio — para me vingar.</button>
+      <button onclick="next(3, 'C')">Faria parecer que nunca senti nada por ele.</button>
     </div>
-    <div class="depoimento-slide">
-      <img src="https://i.postimg.cc/cHDGrrK1/4.png" alt="Depoimento 4">
+    <div class="question" id="q3">
+      <p>No fundo, você sente que…</p>
+      <button onclick="next(4, 'A')">Ele ainda pensa em mim, mesmo fingindo que não.</button>
+      <button onclick="next(4, 'B')">Perdi o controle da situação.</button>
+      <button onclick="next(4, 'C')">Só falta um gatilho certo pra ele voltar.</button>
     </div>
-        <div class="depoimento-slide">
-      <img src="https://i.postimg.cc/mgxfzxr9/5.png" alt="Depoimento 5">
+    <div class="question" id="q4">
+      <p>O que você mais deseja agora?</p>
+      <button onclick="showResult('A')">Que ele me veja como a mulher que ele perdeu.</button>
+      <button onclick="showResult('B')">Virar o jogo e fazer ele me perseguir.</button>
+      <button onclick="showResult('C')">Reverter tudo e fazer ele implorar por mim.</button>
     </div>
-        <div class="depoimento-slide">
-      <img src="https://i.postimg.cc/44MjqCV0/6.png" alt="Depoimento 6">
+    <div class="question" id="result">
+      <h2>Resultado:</h2>
+      <p id="resultText"></p>
+      <a href="lilith.html" style="display:inline-block; margin-top:20px; background:#e60073; padding:12px 24px; color:white; text-decoration:none; border-radius:6px;">Quero ele correndo atrás de mim!</a>
     </div>
   </div>
 </div>
 
+<footer>© Mapa de Lilith</footer>
+
 <script>
-  const trackImg = document.getElementById("depoimentoTrackImg");
-  const totalImg = trackImg.children.length;
-  let indexImg = 0;
-  let interval;
+  let current = 0;
+  let answers = [];
+  const sound = document.getElementById('clickSound');
 
-  function updateCarousel() {
-    trackImg.style.transform = `translateX(-${indexImg * 100}%)`;
+  function startQuiz() {
+    sound.play();
+    document.getElementById('intro').style.display = 'none';
+    document.getElementById('quiz').style.display = 'block';
+    document.getElementById('progressBar').style.display = 'block';
   }
 
-  function nextSlide() {
-    indexImg = (indexImg + 1) % totalImg;
-    updateCarousel();
-    resetTimer();
+  function next(n, choice) {
+    sound.play();
+    answers.push(choice);
+    document.getElementById('q' + current).classList.remove('active');
+    document.getElementById('q' + n).classList.add('active');
+    current = n;
+    document.getElementById('progressBar').style.width = ((n+1)*20) + '%';
   }
 
-  function prevSlide() {
-    indexImg = (indexImg - 1 + totalImg) % totalImg;
-    updateCarousel();
-    resetTimer();
+  function showResult(finalChoice) {
+    sound.play();
+    answers.push(finalChoice);
+    document.getElementById('q' + current).classList.remove('active');
+    document.getElementById('result').classList.add('active');
+    document.getElementById('progressBar').style.width = '100%';
+    const resultText = document.getElementById('resultText');
+    resultText.innerText = interpretResult(answers);
   }
 
-  function startTimer() {
-    interval = setInterval(() => {
-      nextSlide();
-    }, 6000);
-  }
+  function interpretResult(answers) {
+    const counts = { A: 0, B: 0, C: 0 };
+    answers.forEach(a => counts[a]++);
 
-  function resetTimer() {
-    clearInterval(interval);
-    startTimer();
-  }
+    if (counts.A >= 3) return '🩸 Com base nas suas respostas… o problema nunca foi sua intensidade.\n\nVocê sentiu demais, entregou demais — e foi isso que assustou ele.\nHomens fracos fogem de mulheres que ameaçam seu controle.\nMas agora é diferente.\nÉ ele quem vai sentir a ausência queimando… e implorar pra voltar pro fogo.';
 
-  // Start autoplay
-  startTimer();
+    if (counts.B >= 3) return '🔥 Suas respostas revelam uma verdade dura: você se anulou demais.\n\nVocê tentou agradar, silenciar o que sentia, diminuir sua presença.\nE ainda assim… ele foi embora.\nAgora, chegou o momento de parar de correr atrás — e começar a ser perseguida.\nO mapa mostra como virar o jogo sem dizer uma palavra.';
+
+    return '🌑 Tudo indica que você carrega um poder magnético natural — e ele sabe disso.\n\nEle se afasta porque sente. Mas também volta... pelo mesmo motivo.\nVocê ativa algo instintivo nele — mesmo sem entender como.\nAgora, você vai aprender a dominar isso.\nCom o mapa, quem some… é você.';
+  }
 </script>
-
-    <h2>Como Funciona:</h2>
-    <p>Após finalizar a compra, você receberá no seu e-mail o acesso completo ao conteúdo do Mapa (você terá direito a todas as futuras atualizações do Mapa ao adquirir agora).</p>
-    <p>Lá dentro, você vai descobrir o passo a passo de como usar sua energia para atrair ele — sem precisar correr atrás, mandar mensagem ou se humilhar.</p>
-    <p>Basta aplicar as orientações e observar ele começar a sentir a sua falta… Até que a vontade de voltar fale mais alto.</p>
-
-    <h2 style="margin-top: 60px;">O que você vai receber ao acessar:</h2>
-    <ul>
-      <li><strong>O Beijo de Lilith</strong> — A técnica proibida que mexe com a memória emocional dele e faz ele voltar sem entender por quê</li>
-      <li><strong>A Presença Invertida</strong> — O jeito certo de fazer ele sentir sua falta de forma quase dolorosa</li>
-      <li><strong>A Mensagem que Silencia</strong> — Uma frase única que reverte silêncio em resposta (sem parecer carente)</li>
-      <li><strong>O Espelho do Desejo</strong> — Como ativar o gesto o que faz ele imaginar você até dormindo</li>
-      <li><strong>A Reconexão Silenciosa</strong> — O exato momento de reaparecer sem parecer desesperada… e fazer ele tomar iniciativa</li>
-      <li><strong>O Mapa de Lilith</strong> — Um manual de manipulação e técnicas que irá fazer ele implorar para ficar na sua vida</li>
-    </ul>
-
-    <p>Você não precisa acreditar agora.</p>
-    <p>Você só precisa aplicar o que vai receber — do jeito certo — e observar.</p>
-    <p>Não é mágica. É técnica emocional. É energia reposicionada.</p>
-    <p>Se ele ainda sente algo por você (mesmo que negue),  
-    o efeito vai começar em até 7 dias: com uma mensagem, um sinal, um retorno inesperado.</p>
-    <p><strong>Mas se não acontecer… Talvez ele nunca tenha sentido de verdade.</strong></p>
-
-
-    
-
-      <p style="margin-top: 30px; font-size: 22px; color: #ffd700;">
-      Por conta do Mapa de Lilith se tratar de algo altamente persuasivo e manipulador...<br>
-      O acesso a este método é liberado apenas para um grupo restrito de mulheres por dia.  <br>
-      Tudo o que você precisa fazer é aplicar o passo a passo e observar ele voltar.  
-      <strong><br>Por um simples valor simbólico de R$27</strong> por tempo limitado.
-      </p>
-      <p style="color: #ff4d4d; font-size: 18px; margin-top: 10px;">
-      Valor simbólico apenas enquanto houverem acessos disponíveis!<br>
-      Depois, o conteúdo voltará ao valor original de R$97.
-      </p>
-
-
-    <div class="cta">
-      <a href="https://pay.kirvano.com/ac9c01d2-0992-454c-921e-f5331552deba">Quero aprender a fazer ele sentir minha falta agora!</a>
-      <div class="escassez">⚠️ Desconto disponível somente até os acessos se esgotarem!</div>
-      <div class="contador" id="contador">Restam 17 acessos disponíveis</div>
-    </div>
-
-    <footer>© Mapa de Lilith 2025</footer>
-  </div>
-
-  <script>
-    let acessos = 17;
-    setInterval(() => {
-      if (acessos > 11) {
-        acessos--;
-        document.getElementById("contador").textContent = `Restam ${acessos} acessos disponíveis`;
-      }
-    }, 8000);
-
-    const stars = document.getElementById("stars");
-    for (let i = 0; i < 60; i++) {
-      const star = document.createElement("div");
-      star.classList.add("star");
-      star.style.left = Math.random() * 100 + "vw";
-      star.style.top = Math.random() * 100 + "vh";
-      star.style.animationDuration = (6 + Math.random() * 10) + "s";
-      stars.appendChild(star);
-    }
-  </script>
-
-
-  
-  
 </body>
 </html>
