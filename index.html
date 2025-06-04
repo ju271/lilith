@@ -31,11 +31,6 @@
       height: auto;
       margin-bottom: 20px;
     }
-    .subtitle {
-      font-size: 19px;
-      margin-bottom: 20px;
-      color: #c9b98b;
-    }
     .hidden { display: none; }
     .progress-bar {
       height: 10px;
@@ -45,7 +40,7 @@
       margin-bottom: 20px;
     }
     .question {
-      font-size: 19px;
+      font-size: 29px;
       margin-top: 30px;
       display: none;
     }
@@ -56,156 +51,180 @@
     button {
       margin: 10px 0;
       padding: 12px 20px;
-      background: #daa520;
+      background: #e60073;
       border: none;
       color: #fff;
       cursor: pointer;
       border-radius: 6px;
       width: 100%;
-      font-size: 15px;
+      font-size: 20px;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+      transition: all 0.3s ease;
     }
     button:hover {
       opacity: 0.9;
+      transform: scale(1.02);
     }
     footer {
       font-size: 11px;
       color: #888;
       margin-top: 30px;
     }
+    .loader-bar {
+      width: 100%;
+      height: 12px;
+      background-color: #333;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .loader-progress {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #e60073, #ffb6c1);
+      animation: loadBar 2s linear forwards;
+    }
+    @keyframes loadBar {
+      0% { width: 0%; }
+      100% { width: 100%; }
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
   </style>
-  <!-- TikTok Pixel Code Start -->
-<script>
-!function (w, d, t) {
-  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
-var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
-;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
-
-
-  ttq.load('D0BNIFBC77UDFM0G1M7G');
-  ttq.page();
-}(window, document, 'ttq');
-</script>
-<!-- TikTok Pixel Code End -->
-  <!-- Meta Pixel Code -->
-<script type="rocketlazyloadscript">
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1191741876013679');
-fbq('trackCustom', 'QUIZZ');
-</script>
-<noscript>
-<img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=910593670153469&ev=PageView&noscript=1"
-/>
-</noscript>
-<!-- End Meta Pixel Code -->
 </head>
 <body>
-  <!-- restante do código continua igual -->
+<audio id="clickSound" src="effect.mp3" preload="auto"></audio>
+<div class="container">
+  <img src="logo.png" alt="Mapa de Lilith" class="logo"/>
 
-  <div class="container">
-    <img src="logo.png" alt="Mapa de Lilith" class="logo"/>
-    <div class="subtitle" id="subtitle">
-      Ele se afastou mesmo depois de tudo que vocês viveram...<br><br>
+  <div id="intro">
+    <h2 style="font-size: 1.6em; color: #f5e6c3; margin-bottom: 13px;">Existem 5 gatilhos secretos que deixam um homem viciado sem saber o porquê.</h2>
+    <p style="font-style: italic; font-size: 1.4em; color: #c9b98b; margin-bottom: 30px;">Lilith usava todas, agora é a sua vez.</p>
+    <p style="font-size: 1.4em; margin-bottom: 30px; color: #f5e6c3;">Responda o quizz e acesse o mapa. Hora de despertar seu poder feminino oculto.</p>
+    <button onclick="startQuiz()">Vamos Começar</button>
+  </div>
 
-      Talvez ele tenha dito que precisava de espaço.  
-      Talvez ele tenha sumido sem aviso.  
-      Ou talvez… ele nunca chegou a valorizar tudo o que você entregou.<br><br>
+  <div class="progress-bar" id="progressBar" style="display:none;"></div>
 
-      O que ninguém te contou é que isso não foi culpa sua.  
-      Foi o jeito errado de usar o poder certo.<br><br>
+  <div id="quiz" style="display:none;">
+    <div class="question active" id="q0">
+      <p>Você sente que ele se afastou porque…</p>
+      <button onclick="next(1, 'A')">Fui intensa demais, e isso assustou ele.</button>
+      <button onclick="next(1, 'B')">Me entreguei cedo demais, e perdeu o mistério.</button>
+      <button onclick="next(1, 'C')">Dei tudo, mas ele nunca valorizou.</button>
+    </div>
+    <div class="question" id="q1">
+      <p>O que mais machuca nessa história com ele?</p>
+      <button onclick="next(2, 'A')">Saber que ele tá bem… enquanto eu sinto falta.</button>
+      <button onclick="next(2, 'B')">A forma como ele simplesmente sumiu sem olhar pra trás.</button>
+      <button onclick="next(2, 'C')">O fato de ele me desejar, mas nunca me escolher.</button>
+    </div>
+    <div class="question" id="q2">
+      <p>Se ele voltasse hoje… o que você faria?</p>
+      <button onclick="next(3, 'A')">Faria ele correr atrás até implorar.</button>
+      <button onclick="next(3, 'B')">Daria o troco em silêncio — para me vingar.</button>
+      <button onclick="next(3, 'C')">Faria parecer que nunca senti nada por ele.</button>
+    </div>
+    <div class="question" id="q3">
+      <p>No fundo, você sente que…</p>
+      <button onclick="next(4, 'A')">Ele ainda pensa em mim, mesmo fingindo que não.</button>
+      <button onclick="next(4, 'B')">Perdi o controle da situação.</button>
+      <button onclick="next(4, 'C')">Só falta um gatilho certo pra ele voltar.</button>
+    </div>
+    <div class="question" id="q4">
+      <p>O que você mais deseja agora?</p>
+      <button onclick="showResult('A')">Que ele me veja como a mulher que ele perdeu.</button>
+      <button onclick="showResult('B')">Virar o jogo e fazer ele me perseguir.</button>
+      <button onclick="showResult('C')">Reverter tudo e fazer ele implorar por mim.</button>
+    </div>
 
-      Dentro de você existe uma força que atrai, domina e hipnotiza.  
-      Mas quando ela é ignorada, você vira presa fácil — e ele percebe.<br><br>
-
-      Se você já sentiu que ele deveria correr atrás de você... É porque pode acontecer. <br><br>
-      Só precisa apertar o gatilho certo.<br><br>
-
-      Responda essas perguntas rápidas e descubra exatamente o que tá bloqueando esse magnetismo: 
-      </div>
-
-    <div class="progress-bar" id="progressBar"></div>
-    <div id="quiz">
-      <!-- Perguntas -->
-      <div class="question active" id="q0">
-        <p>Você sente que ele se afastou porque…</p>
-        <button onclick="next(1, 'A')">Fui intensa demais, e isso assustou ele.</button>
-        <button onclick="next(1, 'B')">Me entreguei cedo demais, e perdeu o mistério.</button>
-        <button onclick="next(1, 'C')">Dei tudo, mas ele nunca valorizou.</button>
-      </div>
-      <div class="question" id="q1">
-        <p>O que mais machuca nessa história com ele?</p>
-        <button onclick="next(2, 'A')">Saber que ele tá bem… enquanto eu sinto falta.</button>
-        <button onclick="next(2, 'B')">A forma como ele simplesmente sumiu sem olhar pra trás.</button>
-        <button onclick="next(2, 'C')">O fato de ele me desejar, mas nunca me escolher.</button>
-
-      </div>
-      <div class="question" id="q2">
-        <p>Se ele voltasse hoje… o que você faria?</p>
-        <button onclick="next(3, 'A')">Faria ele correr atrás até implorar.</button>
-        <button onclick="next(3, 'B')">Daria o troco em silêncio — para me vingar.</button>
-        <button onclick="next(3, 'C')">Faria parecer que nunca senti nada por ele.</button>
-      </div>
-      <div class="question" id="q3">
-        <p>No fundo, você sente que…</p>
-        <button onclick="next(4, 'A')">Ele ainda pensa em mim, mesmo fingindo que não.</button>
-        <button onclick="next(4, 'B')">Perdi o controle da situação.</button>
-        <button onclick="next(4, 'C')">Só falta um gatilho certo pra ele voltar.</button>
-      </div>
-      <div class="question" id="q4">
-        <p>O que você mais deseja agora?</p>
-        <button onclick="showResult('A')">Que ele me veja como a mulher que ele perdeu.</button>
-        <button onclick="showResult('B')">Virar o jogo e fazer ele me perseguir.</button>
-        <button onclick="showResult('C')">Reverter tudo e fazer ele implorar por mim.</button>
-      </div>
-      <div class="question" id="result">
-        <h2>Resultado:</h2>
-        <p id="resultText"></p>
-        <a href="lilith.html" style="display:inline-block; margin-top:20px; background:#e60073; padding:12px 24px; color:white; text-decoration:none; border-radius:6px;">Quero ele correndo atrás de mim!</a>
+    <div class="question" id="loading">
+      <p style="margin-bottom: 20px;">Analisando suas respostas...</p>
+      <div class="loader-bar">
+        <div class="loader-progress"></div>
       </div>
     </div>
+
+    <div class="question" id="result">
+      <h2>Resultado:</h2>
+      <p id="resultText"></p>
+      <a href="lilith.html" style="display:inline-block; margin-top:20px; background:#e60073; padding:12px 24px; color:white; text-decoration:none; border-radius:6px;">Quero ele correndo atrás de mim!</a>
+    </div>
   </div>
-  <footer>© Mapa de Lilith</footer>
-  <script>
-    let current = 0;
-    let answers = [];
+</div>
 
-    function next(n, choice) {
-      answers.push(choice);
-      document.getElementById('q' + current).classList.remove('active');
-      document.getElementById('q' + n).classList.add('active');
-      current = n;
-      document.getElementById('progressBar').style.width = ((n+1)*20) + '%';
-    }
+<footer>© Mapa de Lilith</footer>
 
-    function showResult(finalChoice) {
-      answers.push(finalChoice);
-      document.getElementById('q' + current).classList.remove('active');
+<style>
+  .loader-bar {
+    width: 100%;
+    height: 12px;
+    background-color: #333;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .loader-progress {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #e60073, #ffb6c1);
+    animation: loadBar 2s linear forwards;
+  }
+  @keyframes loadBar {
+    0% { width: 0%; }
+    100% { width: 100%; }
+  }
+</style>
+
+<script>
+  let current = 0;
+  let answers = [];
+  const sound = document.getElementById('clickSound');
+
+  function startQuiz() {
+    sound.play();
+    document.getElementById('intro').style.display = 'none';
+    document.getElementById('quiz').style.display = 'block';
+    document.getElementById('progressBar').style.display = 'block';
+  }
+
+  function next(n, choice) {
+    sound.play();
+    answers.push(choice);
+    document.getElementById('q' + current).classList.remove('active');
+    document.getElementById('q' + n).classList.add('active');
+    current = n;
+    document.getElementById('progressBar').style.width = ((n+1)*20) + '%';
+  }
+
+  function showResult(finalChoice) {
+    sound.play();
+    answers.push(finalChoice);
+    document.getElementById('q' + current).classList.remove('active');
+    document.getElementById('loading').classList.add('active');
+    document.getElementById('progressBar').style.width = '100%';
+
+    setTimeout(() => {
+      document.getElementById('loading').classList.remove('active');
       document.getElementById('result').classList.add('active');
-      document.getElementById('progressBar').style.width = '100%';
-      document.getElementById('subtitle').classList.add('hidden');
       const resultText = document.getElementById('resultText');
       resultText.innerText = interpretResult(answers);
-    }
+    }, 2000);
+  }
 
-    function interpretResult(answers) {
-      const counts = { A: 0, B: 0, C: 0 };
-      answers.forEach(a => counts[a]++);
-      if (counts.A >= 3) return '🩸 Você é a Lilith Obscurecida 🩸\n\nVocê entregou tudo, e mesmo assim foi ignorada. Isso não foi fraqueza — foi excesso de poder não canalizado.\n\nQuando você ama, você consome. Ele sentiu. Mas não soube lidar, então fugiu. Homens assim somem quando a intensidade ameaça quebrar as defesas deles.\n\nMas agora, chegou sua vez. Sua ausência vai gritar. Seu silêncio vai ferir mais do que qualquer mensagem.\n\nE quando ele sentir o vazio, vai lembrar de quem você é. E só aí, se você quiser, ele vai poder se aproximar novamente.';
-      if (counts.B >= 3) return '🔥 Você é a Lilith Adormecida 🔥\n\nVocê se calou, se adaptou, se diminuiu — achando que isso ia fazer ele ficar. Mas você não foi feita pra caber no raso.\n\nToda vez que você engole o que sente, uma parte sua adormece. Mas o fogo tá aceso aí dentro, e ele vai sentir quando você acionar isso.\n\nNão é sobre ele ver valor em você. É sobre ele perceber o que perdeu, e sentir falta do que nem conseguiu entender quando tinha.\n\nAgora, você se levanta. E quem corre atrás é ele.';
-     return '🌑 Você é a Lilith Magnética 🌑\n\nVocê não precisa correr atrás. Você nunca precisou. A verdade é que ele já sentiu o que você carrega… mas ainda não sabe lidar com isso.\n\nExiste algo em você que mexe com o instinto dele — e isso assusta. Por isso ele se afasta. Mas também é por isso que ele sempre volta.\n\nVocê só precisa ativar o que ele não consegue esquecer. Não é sobre falar com ele, nem se rebaixar. É sobre fazer ele sentir sua ausência como um veneno lento.\n\nQuando isso acontece, o jogo vira. Ele procura, ele insiste, ele implora. E você escolhe se quer olhar pra trás.';
-    }
-  </script>
+  function interpretResult(answers) {
+    const counts = { A: 0, B: 0, C: 0 };
+    answers.forEach(a => counts[a]++);
+
+    if (counts.A >= 3) return '🩸 Com base nas suas respostas… o problema nunca foi sua intensidade.\n\nVocê sentiu demais, entregou demais — e foi isso que assustou ele.\nHomens fracos fogem de mulheres que ameaçam seu controle.\nMas agora é diferente.\nÉ ele quem vai sentir a ausência queimando… e implorar pra voltar pro fogo.';
+
+    if (counts.B >= 3) return '🔥 Suas respostas revelam uma verdade dura: você se anulou demais.\n\nVocê tentou agradar, silenciar o que sentia, diminuir sua presença.\nE ainda assim… ele foi embora.\nAgora, chegou o momento de parar de correr atrás — e começar a ser perseguida.\nO mapa mostra como virar o jogo sem dizer uma palavra.';
+
+    return '🌑 Tudo indica que você carrega um poder magnético natural — e ele sabe disso.\n\nEle se afasta porque sente. Mas também volta... pelo mesmo motivo.\nVocê ativa algo instintivo nele — mesmo sem entender como.\nAgora, você vai aprender a dominar isso.\nCom o mapa, quem some… é você.';
+  }
+</script>
 </body>
+
+
 </html>
