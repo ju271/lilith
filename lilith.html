@@ -160,6 +160,55 @@
     right: 10px;
   }
 
+    .bonus-carousel {
+    margin-top: 30px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .bonus-track {
+    display: flex;
+    transition: transform 0.8s ease;
+  }
+
+  .bonus-slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+  }
+
+  .bonus-slide img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+  }
+
+  .bonus-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    color: white;
+    font-size: 26px;
+    padding: 8px 14px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+    transition: background 0.2s;
+  }
+
+  .bonus-arrow:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  .bonus-left { left: 10px; }
+  .bonus-right { right: 10px; }
 
     @keyframes float {
       0% { transform: translateY(100vh); opacity: 0; }
@@ -241,6 +290,28 @@
       <li><strong>O Mapa de Lilith</strong> — Um manual de manipulação emocional que vira o jogo sem esforço</li><br>
     </ul>
 
+
+    <h2 style="margin-top: 60px; color: #ffd700;">Além disso, você receberá 3 Super Bônus Exclusivos:</h2>
+    <div class="bonus-carousel">
+  <button class="bonus-arrow bonus-left" onclick="prevBonus()">‹</button>
+  <button class="bonus-arrow bonus-right" onclick="nextBonus()">›</button>
+
+  <div class="bonus-track" id="bonusTrack">
+    <div class="bonus-slide">
+      <img src="bonus1.png" alt="Bônus 1 – Técnicas de Comunicação de Alto Impacto">
+      <p style="color:#e6d8ac; margin-top:10px;"><strong>💬 Técnicas de Comunicação de Alto Impacto:</strong> Aprenda exatamente como falar, o que dizer, e quando dizer para criar apego emocional imediato.</p>
+    </div>
+    <div class="bonus-slide">
+      <img src="bonus2.png" alt="Bônus 2 – Checklist de Reposicionamento Feminino">
+      <p style="color:#e6d8ac; margin-top:10px;"><strong>📋 Checklist de Reposicionamento Feminino:</strong> Um guia direto ao ponto com as mudanças que elevam sua presença em qualquer ambiente (online ou físico).</p>
+    </div>
+    <div class="bonus-slide">
+      <img src="bonus3.png" alt="Bônus 3 – Mini Guia de Frases de Poder Psicológico">
+      <p style="color:#e6d8ac; margin-top:10px;"><strong>🧠 Mini Guia de Frases de Poder Psicológico:</strong> Uma seleção de expressões de efeito que geram curiosidade, tensão emocional e desejo.</p>
+    </div>
+  </div>
+</div>
+
     <p>Você não precisa acreditar agora. Só aplicar — e observar.</p>
     <p>Se ele ainda sente algo por você (mesmo que negue), o efeito começa em até 7 dias.</p><br>
 
@@ -262,6 +333,42 @@
 
     <footer>© Mapa de Lilith 2025</footer>
   </div>
+
+  <script>
+  const bonusTrack = document.getElementById("bonusTrack");
+  const totalBonus = bonusTrack.children.length;
+  let indexBonus = 0;
+  let bonusInterval;
+
+  function updateBonus() {
+    bonusTrack.style.transform = `translateX(-${indexBonus * 100}%)`;
+  }
+
+  function nextBonus() {
+    indexBonus = (indexBonus + 1) % totalBonus;
+    updateBonus();
+    resetBonusTimer();
+  }
+
+  function prevBonus() {
+    indexBonus = (indexBonus - 1 + totalBonus) % totalBonus;
+    updateBonus();
+    resetBonusTimer();
+  }
+
+  function startBonusTimer() {
+    bonusInterval = setInterval(() => {
+      nextBonus();
+    }, 6000);
+  }
+
+  function resetBonusTimer() {
+    clearInterval(bonusInterval);
+    startBonusTimer();
+  }
+
+  startBonusTimer();
+</script>
 
   <script>
     let acessos = 17;
