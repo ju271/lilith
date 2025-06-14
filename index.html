@@ -108,51 +108,56 @@
 
   <div class="progress-bar" id="progressBar" style="display:none;"></div>
 
-  <div id="quiz" style="display:none;">
-    <div class="question active" id="q0">
-      <p>Você sente que ele se afastou porque…</p>
-      <button onclick="next(1, 'A')">Fui intensa demais, e isso assustou ele.</button>
-      <button onclick="next(1, 'B')">Me entreguei cedo demais, e perdeu o mistério.</button>
-      <button onclick="next(1, 'C')">Dei tudo, mas ele nunca valorizou.</button>
-    </div>
-    <div class="question" id="q1">
-      <p>O que mais machuca nessa história com ele?</p>
-      <button onclick="next(2, 'A')">Saber que ele tá bem… enquanto eu sinto falta.</button>
-      <button onclick="next(2, 'B')">A forma como ele simplesmente sumiu sem olhar pra trás.</button>
-      <button onclick="next(2, 'C')">O fato de ele me desejar, mas nunca me escolher.</button>
-    </div>
-    <div class="question" id="q2">
-      <p>Se ele voltasse hoje… o que você faria?</p>
-      <button onclick="next(3, 'A')">Faria ele correr atrás até implorar.</button>
-      <button onclick="next(3, 'B')">Daria o troco em silêncio — para me vingar.</button>
-      <button onclick="next(3, 'C')">Faria parecer que nunca senti nada por ele.</button>
-    </div>
-    <div class="question" id="q3">
-      <p>No fundo, você sente que…</p>
-      <button onclick="next(4, 'A')">Ele ainda pensa em mim, mesmo fingindo que não.</button>
-      <button onclick="next(4, 'B')">Perdi o controle da situação.</button>
-      <button onclick="next(4, 'C')">Só falta um gatilho certo pra ele voltar.</button>
-    </div>
-    <div class="question" id="q4">
-      <p>O que você mais deseja agora?</p>
-      <button onclick="showResult('A')">Que ele me veja como a mulher que ele perdeu.</button>
-      <button onclick="showResult('B')">Virar o jogo e fazer ele me perseguir.</button>
-      <button onclick="showResult('C')">Reverter tudo e fazer ele implorar por mim.</button>
-    </div>
+<div id="quiz" style="display:none;">
+  <div class="question active" id="q0">
+    <p>O que mais te atrai na ideia de ter um homem correndo atrás?</p>
+    <button onclick="next(1, 'A')">Saber que ele me deseja mais do que eu a ele.</button>
+    <button onclick="next(1, 'B')">Ver ele se esforçando por mim, não o contrário.</button>
+    <button onclick="next(1, 'C')">Sentir que eu sou a prioridade na mente dele.</button>
+  </div>
 
-    <div class="question" id="loading">
-      <p style="margin-bottom: 20px;">Analisando suas respostas...</p>
-      <div class="loader-bar">
-        <div class="loader-progress"></div>
-      </div>
-    </div>
+  <div class="question" id="q1">
+    <p>O que costuma acontecer quando você se interessa por alguém?</p>
+    <button onclick="next(2, 'A')">Eu mostro interesse e ele some ou esfria.</button>
+    <button onclick="next(2, 'B')">Fico na dúvida se devo demonstrar ou me afastar.</button>
+    <button onclick="next(2, 'C')">Fico esperando ele tomar iniciativa e perco o timing.</button>
+  </div>
 
-    <div class="question" id="result">
-      <h2>Resultado:</h2>
-      <p id="resultText"></p>
-      <a href="lilith.html" style="display:inline-block; margin-top:20px; background:#e60073; padding:12px 24px; color:white; text-decoration:none; border-radius:6px;">Quero ele correndo atrás de mim!</a>
+  <div class="question" id="q2">
+    <p>O que você mais gostaria de sentir em uma conquista?</p>
+    <button onclick="next(3, 'A')">Que ele esteja sempre pensando em mim.</button>
+    <button onclick="next(3, 'B')">Que ele sinta ciúmes e medo de me perder.</button>
+    <button onclick="next(3, 'C')">Que ele corra atrás com atitude de homem decidido.</button>
+  </div>
+
+  <div class="question" id="q3">
+    <p>Na sua visão, qual dessas frases mais combina com sua fase atual?</p>
+    <button onclick="next(4, 'A')">“Cansei de dar atenção pra quem não valoriza.”</button>
+    <button onclick="next(4, 'B')">“Quero ser impossível de esquecer.”</button>
+    <button onclick="next(4, 'C')">“Tô pronta pra ativar meu poder e fazer ele vir.”</button>
+  </div>
+
+  <div class="question" id="q4">
+    <p>Como você reagiria se um homem começasse a te perseguir emocionalmente?</p>
+    <button onclick="showResult('A')">Ia adorar ver ele viciado em mim.</button>
+    <button onclick="showResult('B')">Usaria isso pra manter ele sempre querendo mais.</button>
+    <button onclick="showResult('C')">Faria ele sentir que sou única e insubstituível.</button>
+  </div>
+
+  <div class="question" id="loading">
+    <p style="margin-bottom: 20px;">Analisando suas respostas...</p>
+    <div class="loader-bar">
+      <div class="loader-progress"></div>
     </div>
   </div>
+
+  <div class="question" id="result">
+    <h2>Resultado:</h2>
+    <p id="resultText"></p>
+    <a href="lilith.html" style="display:inline-block; margin-top:20px; background:#e60073; padding:12px 24px; color:white; text-decoration:none; border-radius:6px;">Quero ele correndo atrás de mim!</a>
+  </div>
+</div>
+
 </div>
 
 <footer>© Mapa de Lilith</footer>
@@ -214,15 +219,34 @@
   }
 
   function interpretResult(answers) {
-    const counts = { A: 0, B: 0, C: 0 };
-    answers.forEach(a => counts[a]++);
+  const counts = { A: 0, B: 0, C: 0 };
+  answers.forEach(a => counts[a]++);
 
-    if (counts.A >= 3) return '🩸 Com base nas suas respostas… o problema nunca foi sua intensidade.\n\nVocê sentiu demais, entregou demais — e foi isso que assustou ele.\nHomens fracos fogem de mulheres que ameaçam seu controle.\nMas agora é diferente.\nÉ ele quem vai sentir a ausência queimando… e implorar pra voltar pro fogo.';
+  if (counts.A >= 3) return `🔥 Resultado: Obsessão Sutil 🔥
 
-    if (counts.B >= 3) return '🔥 Suas respostas revelam uma verdade dura: você se anulou demais.\n\nVocê tentou agradar, silenciar o que sentia, diminuir sua presença.\nE ainda assim… ele foi embora.\nAgora, chegou o momento de parar de correr atrás — e começar a ser perseguida.\nO mapa mostra como virar o jogo sem dizer uma palavra.';
+Você é o tipo de mulher que causa um vício silencioso. Seu poder está na forma como você some quando ele quer sua atenção, e aparece quando ele menos espera. Isso ativa nele a sensação de escassez — e o medo de perder algo raro.
 
-    return '🌑 Tudo indica que você carrega um poder magnético natural — e ele sabe disso.\n\nEle se afasta porque sente. Mas também volta... pelo mesmo motivo.\nVocê ativa algo instintivo nele — mesmo sem entender como.\nAgora, você vai aprender a dominar isso.\nCom o mapa, quem some… é você.';
-  }
+Agora é a hora de canalizar isso. Com os gatilhos certos, você não precisa insistir, cobrar ou explicar nada. Ele vai começar a fazer movimentos por conta própria. Vai puxar assunto sem ter motivo. Vai sentir sua ausência como um buraco. 
+
+Você não é qualquer uma — e o cérebro dele vai entender isso quando sentir que não tem mais você.`;
+
+  if (counts.B >= 3) return `💋 Resultado: Magnetismo Ativo 💋
+
+Você é puro contraste. Um misto de presença marcante com ausência estratégica. Você sabe exatamente quando se afastar pra fazer ele sentir falta, e quando voltar pra reativar tudo. Esse jogo — quando feito com intenção — transforma você em um padrão emocional na mente dele.
+
+O que vem agora é simples: você vai ativar os gatilhos que confundem o cérebro dele e criam apego, desejo e até ciúmes... sem uma palavra direta. A presença emocional que você vai representar vai tornar você o ponto de segurança e adrenalina dele ao mesmo tempo.
+
+E quando isso acontece… nenhum outro nome tem mais impacto que o seu.`;
+
+  return `🧠 Resultado: Controle Invisível 🧠
+
+Você nasceu pra comandar sem parecer mandona. Sua maior força está nos detalhes: na forma como olha, fala, se movimenta. Isso ativa algo ancestral no cérebro masculino — e quando ativado da forma certa, ele começa a te associar com tudo que traz prazer, validação e excitação.
+
+A partir de agora, você vai entender o protocolo por trás do apego emocional masculino. Vai aplicar técnicas que fazem ele se esforçar sem perceber, sentir sua falta sem motivo, e criar comportamentos que te colocam como prioridade emocional.
+
+A mente dele vai ser programada pra desejar você todos os dias. E ele nunca vai entender o porquê.`;
+}
+
 </script>
 </body>
 
