@@ -216,39 +216,48 @@
       100% { transform: translateY(-10vh); opacity: 0; }
     }
      .faq-section {
-    max-width: 700px;
+    max-width: 720px;
     margin: 60px auto;
-    padding: 0 20px;
+    padding: 40px 30px;
+    background: #1a1a1a;
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.1);
+    border: 1px solid #ffd70044;
     font-family: 'Georgia', serif;
     color: #f5e6c3;
   }
 
   .faq-title {
-    font-size: 28px;
-    text-align: center;
+    font-size: 26px;
     color: #ffd700;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
+    text-align: left;
+    border-left: 4px solid #ffd700;
+    padding-left: 12px;
   }
 
   .faq-item {
-    border-bottom: 1px solid #444;
-    padding: 15px 0;
+    border-bottom: 1px solid #333;
+    padding: 18px 0;
     cursor: pointer;
     transition: 0.3s;
   }
 
   .faq-question {
-    font-size: 20px;
+    font-size: 19px;
     font-weight: bold;
     position: relative;
-    padding-right: 25px;
+    padding-right: 30px;
+    color: #fff2cc;
   }
 
   .faq-question::after {
     content: '+';
     position: absolute;
     right: 0;
-    font-size: 24px;
+    top: 0;
+    font-size: 22px;
+    color: #ffd700;
     transition: 0.3s;
   }
 
@@ -261,7 +270,7 @@
     overflow: hidden;
     transition: max-height 0.4s ease, opacity 0.4s ease;
     opacity: 0;
-    font-size: 18px;
+    font-size: 17px;
     line-height: 1.6;
     color: #d8c99b;
     margin-top: 10px;
@@ -393,7 +402,7 @@
       <div class="escassez">⚠️ Ferramenta disponível somente até os acessos se esgotarem!</div>
       <div class="contador" id="contador">Restam 17 acessos disponíveis</div>
     </div>
-    <div class="faq-section">
+   <div class="faq-section">
   <div class="faq-title">Perguntas Frequentes</div>
 
   <div class="faq-item">
